@@ -1,1 +1,28 @@
-<!doctype html><html><head><meta charset='utf-8'><title>JFW Dienstbuch</title></head><body><div id='app'></div><script src='app.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dienstbuch Feuerwehr Lüttringhausen</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <nav id="nav">
+    <button id="tab-dienste" class="tab active">Dienste</button>
+    <button id="tab-kinder" class="tab">Kinder</button>
+    <button id="tab-betreuer" class="tab">Betreuer</button>
+    <button id="tab-statistik" class="tab">Statistik</button>
+    <button id="tab-backup" class="tab">Backup</button>
+    <button id="tab-admin" class="tab admin">Admin-Login</button>
+  </nav>
+  <main id="content"></main>
+  <div id="modal" class="modal hidden"></div>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>

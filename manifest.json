@@ -1,1 +1,9 @@
-{"name":"JFW Dienstbuch","short_name":"Dienstbuch","start_url":".","display":"standalone"}
+{
+  "name": "Dienstbuch Feuerwehr Lüttringhausen",
+  "short_name": "Dienstbuch",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#222222",
+  "icons": []
+}
