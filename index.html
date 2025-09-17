@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dienstbuch Feuerwehr Lüttringhausen</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/pwa-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+  <header class="app-header">
+    <h1>📘 Dienstbuch <span>Feuerwehr Lüttringhausen</span></h1>
+    <nav>
+      <button id="nav-dienste" class="tab-btn active">Dienste</button>
+      <button id="nav-kinder" class="tab-btn">Kinder</button>
+      <button id="nav-betreuer" class="tab-btn">Betreuer</button>
+      <button id="nav-statistik" class="tab-btn">Statistik</button>
+      <button id="btn-backup" title="Backup/Restore">💾</button>
+    </nav>
+  </header>
+
+  <main id="view"></main>
+
+  <template id="tmpl-service-row">
+    <tr>
+      <td class="nowrap date"></td>
+      <td class="title"></td>
+      <td class="note"></td>
+      <td class="center kids-count"></td>
+      <td class="center betreuer-count"></td>
+      <td class="nowrap">
+        <button class="btn small primary open">Öffnen</button>
+        <button class="btn small secondary pdf">PDF</button>
+        <button class="btn small danger del">Löschen</button>
+      </td>
+    </tr>
+  </template>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="modal-title"></h2>
+        <button id="modal-close" class="icon-btn" title="Schließen">✖</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <span>Offlinefähig • Lokaler Speicher</span>
+    <span id="version">v1.0.0</span>
+  </footer>
+
+  <script src="app.js?v=1.0.0"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>

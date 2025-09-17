@@ -1,0 +1,96 @@
+/* Minimal, klare UI */
+:root{
+  --bg:#0b1020;
+  --card:#111827;
+  --muted:#94a3b8;
+  --text:#e5e7eb;
+  --primary:#16a34a;
+  --danger:#ef4444;
+  --accent:#22d3ee;
+  --warn:#f59e0b;
+  --ok:#10b981;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font: 15px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,#0f172a 0%,#0b1020 100%);
+}
+
+.app-header, .app-footer{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px;
+  background:#0a0f1e;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:sticky; top:0; z-index:5;
+}
+.app-footer{ position:sticky; bottom:0; top:auto; border-top:1px solid rgba(255,255,255,.06); border-bottom:none; opacity:.8}
+h1{margin:0; font-size:20px}
+h1 span{color:var(--accent); font-weight:700}
+nav{display:flex; gap:8px; align-items:center}
+.tab-btn, .btn{
+  background:#1f2937; color:var(--text); border:1px solid rgba(255,255,255,.08);
+  padding:8px 12px; border-radius:10px; cursor:pointer;
+  transition:.15s transform ease, .15s background ease;
+}
+.tab-btn.active{ background:#0b1327; border-color:#334155}
+.btn:hover, .tab-btn:hover{ transform:translateY(-1px); background:#273244}
+.btn.primary{ background: #14532d; border-color:#1a8a49}
+.btn.secondary{ background:#0b1327; border-color:#334155}
+.btn.danger{ background:#3b0f12; border-color:#7f1d1d}
+.btn.small{ padding:6px 10px; font-size:12px}
+button:disabled{opacity:.5; cursor:not-allowed}
+
+main#view{ padding:18px; max-width:1100px; margin:0 auto}
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.grid{display:grid; gap:12px}
+.grid.cols-2{grid-template-columns:1fr 1fr}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.resp{grid-template-columns:1fr}
+@media(min-width:900px){ .grid.resp{grid-template-columns:2fr 1fr} }
+
+.table{ width:100%; border-collapse: collapse; margin-top:8px}
+.table th,.table td{ padding:10px; border-bottom:1px solid rgba(255,255,255,.08)}
+.table th{ text-align:left; color:var(--muted); font-weight:600; font-size:12px; letter-spacing:.03em; text-transform:uppercase}
+.center{text-align:center}
+.nowrap{white-space:nowrap}
+
+.input, select, input[type="date"]{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.1);
+  background:#0b1327; color:var(--text);
+}
+.check{ display:flex; align-items:center; gap:8px}
+
+.badge{display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,.1)}
+.badge.warn{ background:#3b2b0a; color:#fde68a; border-color:#b45309}
+.badge.ok{ background:#0a2a1d; color:#a7f3d0; border-color:#065f46}
+.badge.info{ background:#0b1327; color:#93c5fd; border-color:#334155}
+.badge.due{ background:#3a0e0a; color:#fecaca; border-color:#7f1d1d}
+
+.kid-row .age{ color:var(--muted); font-size:12px}
+.probation{ color:#fcd34d; margin-left:6px}
+.section-title{ margin:0 0 8px 0; font-size:18px}
+
+.modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.55)}
+.modal.hidden{ display:none}
+.modal-card{ width:min(1100px,96vw); max-height:92vh; overflow:auto; background:#0b0f1f; border:1px solid rgba(255,255,255,.1); border-radius:16px}
+.modal-head{ display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,.08); padding:12px 16px}
+.modal-head h2{ margin:0}
+.modal-card #modal-body{ padding:16px}
+
+.help{ color:var(--muted); font-size:12px}
+
+hr.sep{ border:0; border-top:1px dashed rgba(255,255,255,.12); margin:8px 0}
+
+.stat{ display:flex; flex-direction:column; gap:4px; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+.stat .value{ font-size:22px; font-weight:700}
+.stat .label{ color:var(--muted); font-size:12px}
+
+.inline-actions{display:flex; gap:6px; flex-wrap:wrap}
+.icon-btn{ background:transparent; border:none; color:var(--muted); font-size:18px; cursor:pointer}
