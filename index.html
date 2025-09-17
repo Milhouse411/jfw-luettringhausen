@@ -8,20 +8,51 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <nav id="nav">
-    <button id="tab-dienste" class="tab active">Dienste</button>
-    <button id="tab-kinder" class="tab">Kinder</button>
-    <button id="tab-betreuer" class="tab">Betreuer</button>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="brand">📘 Dienstbuch <span>Feuerwehr Lüttringhausen</span></h1>
+      <div class="meta">Offlinefähig • Daten lokal im Browser</div>
+    </div>
+  </header>
+
+  <nav id="nav" class="site-nav">
+    <!-- IDs bleiben identisch, damit app.js unverändert funktioniert -->
+    <button id="tab-dienste"   class="tab active">Dienste</button>
+    <button id="tab-kinder"    class="tab">Kinder</button>
+    <button id="tab-betreuer"  class="tab">Betreuer</button>
     <button id="tab-statistik" class="tab">Statistik</button>
-    <button id="tab-backup" class="tab">Backup</button>
-    <button id="tab-admin" class="tab admin">Admin-Login</button>
+    <button id="tab-backup"    class="tab" title="Backup/Restore">Backup</button>
+    <button id="tab-admin"     class="tab admin">Admin-Login</button>
   </nav>
-  <main id="content"></main>
-  <div id="modal" class="modal hidden"></div>
+
+  <main id="content" class="container">
+    <!-- app.js rendert hier dynamisch hinein -->
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document">
+      <div class="modal-head">
+        <h3 id="modal-title">Dialog</h3>
+        <button id="modal-close" class="icon-btn" aria-label="Schließen">✕</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">© Feuerwehr Lüttringhausen · <span class="muted">Optimiertes, responsives UI</span></div>
+  </footer>
+
   <script src="app.js"></script>
   <script>
+    // Close modal helper (falls app.js den Button nutzt)
+    document.getElementById('modal-close')?.addEventListener('click', () => {
+      document.getElementById('modal').classList.add('hidden');
+      document.getElementById('modal').setAttribute('aria-hidden', 'true');
+    });
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      navigator.serviceWorker.register('service-worker.js').catch(()=>{});
     }
   </script>
 </body>
